@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Origam.Service.Core</Title>
+        <Description>Classes and interfaces for building Origam service agents </Description>
+        <PackageProjectUrl>https://community.origam.com/</PackageProjectUrl>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/origam/service-core</RepositoryUrl>
+        <PackageTags>origam</PackageTags>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+        <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+        <PackageIcon>origam-icon-107x128.png</PackageIcon>
+        <SignAssembly>false</SignAssembly>
+        <Authors>origam</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Strings.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Strings.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Strings.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Resources" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Resources\origam-icon-107x128.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>
+
+</Project>
