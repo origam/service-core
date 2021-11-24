@@ -9,13 +9,14 @@
         <PackageLicenseUrl></PackageLicenseUrl>
         <RepositoryUrl>https://github.com/origam/service-core</RepositoryUrl>
         <PackageTags>origam</PackageTags>
-        <AssemblyVersion>1.0.1</AssemblyVersion>
-        <FileVersion>1.0.1</FileVersion>
+        <AssemblyVersion>1.0.2</AssemblyVersion>
+        <FileVersion>1.0.2</FileVersion>
         <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
         <PackageIcon>origam-icon-large.png</PackageIcon>
         <SignAssembly>false</SignAssembly>
         <Authors>origam</Authors>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
+        <Version>1.0.2</Version>
     </PropertyGroup>
 
     <ItemGroup>
