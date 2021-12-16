@@ -43,8 +43,8 @@ namespace Origam.Service.Core
         {
             if (!table.Contains(key))
             {
-                throw new ArgumentOutOfRangeException(
-                    $"Missing key {key}");
+                throw new ArgumentOutOfRangeException(key,
+                    $"Missing key \"{key}\"");
             }
             object value = table[key];
             if (value is T t)
@@ -53,7 +53,7 @@ namespace Origam.Service.Core
             }
             else
             {
-                throw new ArgumentOutOfRangeException($"Key {key} should be of type {typeof(T)}");
+                throw new ArgumentOutOfRangeException(key, $"Key \"{key}\" should be of type {typeof(T)}");
             }
         } 
     }
