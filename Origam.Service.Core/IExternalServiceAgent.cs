@@ -25,7 +25,7 @@ namespace Origam.Service.Core
 {
     public interface IExternalServiceAgent
     {
-        object Result{get;}
+        object Result { get;}
         void Run();
         Hashtable Parameters { get; } 
         string MethodName{ get; set; }
