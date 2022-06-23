@@ -1,1 +1,1 @@
-Classes and interfaces for building Origam service agents
+Collection of classes and interfaces for extending applications build on Origam. 
