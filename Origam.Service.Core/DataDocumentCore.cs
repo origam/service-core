@@ -105,5 +105,10 @@ namespace Origam.Service.Core
         {
             return new DataDocumentCore(dataSet);
         }
+
+        public override string ToString()
+        {
+            return Xml.OuterXml;
+        }
     }
 }
