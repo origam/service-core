@@ -28,6 +28,7 @@ namespace Origam.Service.Core
     public class DataDocumentCore : IDataDocument
     {
         private DataSet dataSet;
+        private bool initializedAsDataSet = false;
 
         public DataDocumentCore()
         {
@@ -37,6 +38,7 @@ namespace Origam.Service.Core
         public DataDocumentCore(DataSet dataSet)
         {
             this.dataSet = dataSet;
+            initializedAsDataSet = true;
         }
 
         public DataDocumentCore(XmlDocument xmlDocument) : this()
@@ -58,8 +60,11 @@ namespace Origam.Service.Core
             get
             {
                 XmlDocument xmlDocument = new XmlDocument();
-                // dataSet always returns xml, so it's always safe to convert to xml
-                xmlDocument.LoadXml(dataSet.GetXml());                
+                var navigator = xmlDocument.CreateNavigator();
+                using (var writer = navigator.AppendChild())
+                {
+                    dataSet.WriteXml(writer);
+                }
                 return xmlDocument;
             }
         }
@@ -91,7 +96,18 @@ namespace Origam.Service.Core
 
         public void Load(XmlReader xmlReader, bool doProcessing)
         {
-            dataSet.ReadXml(doProcessing ? new XmlReaderCore(xmlReader) : xmlReader);
+            XmlReadMode mode = XmlReadMode.Auto;
+            if (initializedAsDataSet)
+            {
+                mode = XmlReadMode.IgnoreSchema;
+            }
+            bool enforceConstraints = dataSet.EnforceConstraints;
+            dataSet.EnforceConstraints = false;
+            dataSet.ReadXml(doProcessing ? new XmlReaderCore(xmlReader) : xmlReader, mode);
+            if (enforceConstraints)
+            {
+                dataSet.EnforceConstraints = true;
+            }
         }
 
         public void LoadXml(string xmlString)
