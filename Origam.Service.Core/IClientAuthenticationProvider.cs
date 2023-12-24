@@ -24,8 +24,15 @@ using Microsoft.Extensions.Configuration;
 
 namespace Origam.Service.Core;
 
+// Interface for authentication providers that can authenticate requests outgoing to external services. 
 public interface IClientAuthenticationProvider
 {
+    // Implementations should return false if they cannot authenticate request to the url.
+    // If the request can be authenticated the headers should be modified accordingly.  
     bool TryAuthenticate(string url, Hashtable headers);
+    
+    // Receives IConfiguration parsed from the appsettings. There are no constraints on what should be read
+    // from the configuration. Write what you need to the appsettings.json and read it here.
+    // The configuration section for a class implementing this interface should have the same name as the class.
     void Configure(IConfiguration configuration);
 }
