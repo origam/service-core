@@ -56,6 +56,8 @@ namespace Origam.Service.Core
 		public string FieldName = "";
 		public string EntityName = "";
 		public string Message = "";
+		public int HttpStatusCode = 400;
 		public RuleExceptionSeverity Severity;
-	}
+
+    }
 }
