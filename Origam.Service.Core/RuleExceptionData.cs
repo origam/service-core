@@ -19,6 +19,7 @@ along with ORIGAM. If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
+using Newtonsoft.Json;
 using System;
 
 namespace Origam.Service.Core
@@ -56,6 +57,9 @@ namespace Origam.Service.Core
 		public string FieldName = "";
 		public string EntityName = "";
 		public string Message = "";
+        [JsonIgnore]
+        public int HttpStatusCode = 400;
 		public RuleExceptionSeverity Severity;
-	}
+
+    }
 }
