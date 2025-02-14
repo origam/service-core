@@ -19,7 +19,6 @@ along with ORIGAM. If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-using System;
 using System.Data;
 using System.Xml;
 
@@ -60,12 +59,19 @@ namespace Origam.Service.Core
             get
             {
                 XmlDocument xmlDocument = new XmlDocument();
+                using var writer = new XmlCharacterEscapingWriter(
+                           xmlDocument.CreateNavigator().AppendChild());
+                dataSet.WriteXml(writer);
+                return xmlDocument;
+                /*
+                XmlDocument xmlDocument = new XmlDocument();
                 var navigator = xmlDocument.CreateNavigator();
                 using (var writer = navigator.AppendChild())
                 {
                     dataSet.WriteXml(writer);
                 }
                 return xmlDocument;
+                */
             }
         }
 
