@@ -63,15 +63,6 @@ namespace Origam.Service.Core
                            xmlDocument.CreateNavigator().AppendChild());
                 dataSet.WriteXml(writer);
                 return xmlDocument;
-                /*
-                XmlDocument xmlDocument = new XmlDocument();
-                var navigator = xmlDocument.CreateNavigator();
-                using (var writer = navigator.AppendChild())
-                {
-                    dataSet.WriteXml(writer);
-                }
-                return xmlDocument;
-                */
             }
         }
 
