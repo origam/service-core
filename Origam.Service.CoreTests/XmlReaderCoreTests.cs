@@ -189,6 +189,23 @@ namespace Origam.Common_net2Tests
             Assert.That(root.FirstChild.ChildNodes[0].InnerText, Is.EqualTo("4a183ee2-edf4-4481-9f2c-561ff73a0944"));            
             Assert.That(root.FirstChild.ChildNodes[1].Name, Is.EqualTo("Name"));
             Assert.That(root.FirstChild.ChildNodes[1].InnerText, Is.EqualTo("Some Name"));
+        }        
+        
+        [Test]
+        public void ShouldThrowIfXmlEmpty()
+        {
+            string xml = "<ROOT Id=\"Test\"/>";
+            
+            string ExpectedMessage =
+                "Attempting to merge an XML document that has a root element with attributes. " +
+                "Root element should have no attributes. " +
+                "This is probably a result of an XSLT transformation that does not produce a proper root element.";
+            
+            XmlReaderCore sut = new XmlReaderCore(new XmlTextReader(new StringReader(xml)));
+            var xmlDocument = new XmlDocument();
+
+            var ex = Assert.Throws<Exception>(() => xmlDocument.Load(sut));
+            Assert.That(ex.Message, Is.EqualTo(ExpectedMessage));
         }
     }
 }
